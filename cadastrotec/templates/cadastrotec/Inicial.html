@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  Página Inicial
+{% endblock page_title %}
+
+{% block content %}
+<h1>Nome</h1>
+
+        {% if todo_list %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Roupa</th>
+                <th scope="col">Tamanho</th>
+                <th scope="col">Tecido</th>
+                <th scope="col">arriamento</th>
+                <th scope="col">Detalhamento</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for todo in todo_list %}
+                <tr>
+                    <th scope="row">{{ .pk }}</th>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.created_at }}</td>
+                    <td>{{ todo.deadline }}</td>
+                    <td>{{ todo.finished_at|default:" " }}</td>
+                    <td>
+                        <a {% comment "" %}Botão para completar a tarefa{% endcomment %}
+                          href="{% url "todo_complete" pk=todo.pk %}"
+                          class="btn btn-dark btn-sm {% if todo.finished_at %}disabled{% endif %}"
+                        >
+                          Concluir
+                        </a>
+                        <a {% comment "" %}Botão para editar a tarefa{% endcomment %}
+                          href="{% url "todo_update" pk=todo.pk %}"
+                          class="btn btn-dark btn-sm {% if todo.finished_at %}disabled{% endif %}"
+                        >
+                          Editar
+                        </a>
+                        <a href="{% url "todo_delete" pk=todo.pk %}" class="btn btn-secondary btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p>Não há tarefas disponíveis</p>
+        {% endif %}
+
+        <a href="{% url 'todo_create' %}" class="btn btn-dark">Nova tarefa</a>
+{% endblock content %}

@@ -1,0 +1,54 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+
+# Media files
+/media
+
+# Static files
+/staticfiles
+
+# Virtual environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Other
+*.DS_Store
+*.egg-info/
+dist/
+build/
